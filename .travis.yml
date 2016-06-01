@@ -18,7 +18,6 @@ before_script:
   - sudo service rabbitmq-server restart
   - sudo rabbitmqctl eval '{ok, [Paths]} = init:get_argument(config), hd(Paths).'
   - sudo rabbitmqctl environment
-  - openssl s_client -connect localhost:5671 -cert provision/test_certs/cert.pem -key provision/test_certs/key.pem -CAfile provision/test_certs/cacert.pem -verify false -verify_return_error
   - echo "extension = amqp.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - git clone https://github.com/pdezwart/php-amqp.git
   - cd php-amqp
