@@ -10,8 +10,14 @@ services:
 
 before_script:
   - phpenv config-rm xdebug.ini
+  - ls /home/travis/build/prolic/HumusAmqp/provision/rabbitmq.config
+  - cat /home/travis/build/prolic/HumusAmqp/provision/rabbitmq.config
   - sudo cp /home/travis/build/prolic/HumusAmqp/provision/rabbitmq.config /etc/rabbitmq/
+  - ls /etc/rabbitmq/rabbitmq.config
+  - cat /etc/rabbitmq/rabbitmq.config
   - sudo service rabbitmq-server restart
+  - sudo rabbitmqctl eval '{ok, [Paths]} = init:get_argument(config), hd(Paths).'
+  - sudo rabbitmqctl environment
   - echo "extension = amqp.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - git clone https://github.com/pdezwart/php-amqp.git
   - cd php-amqp
