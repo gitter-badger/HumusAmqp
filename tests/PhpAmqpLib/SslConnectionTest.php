@@ -116,6 +116,8 @@ final class SslConnectionTest extends AbstractConnectionTest
 
         $options->setVhost('/humus-amqp-test');
         $options->setPort(5671);
+        var_dump($p = realpath(__DIR__ . '/../../provision/test_certs/cacert.pem'));
+        var_dump(file_exists($p));
         $options->setCACert(__DIR__ . '/../../provision/test_certs/cacert.pem');
         $options->setCert(__DIR__ . '/../../provision/test_certs/cert.pem');
         $options->setKey(__DIR__ . '/../../provision/test_certs/key.pem');
