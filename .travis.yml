@@ -15,6 +15,8 @@ before_script:
   - sudo cp /home/travis/build/prolic/HumusAmqp/provision/rabbitmq.config /etc/rabbitmq/
   - ls /etc/rabbitmq/rabbitmq.config
   - cat /etc/rabbitmq/rabbitmq.config
+  - echo "127.0.0.1 localhost.ssl" | sudo tee -a /etc/hosts
+  - cat /etc/hosts
   - sudo service rabbitmq-server restart
   - sudo rabbitmqctl eval '{ok, [Paths]} = init:get_argument(config), hd(Paths).'
   - sudo rabbitmqctl environment

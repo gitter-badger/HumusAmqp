@@ -129,6 +129,7 @@ final class ConnectionTest extends AbstractConnectionTest
     public function it_connects_with_ssl()
     {
         $options = new ConnectionOptions();
+        $options->setHost('localhost.ssl');
         $options->setVhost('/humus-amqp-test');
         $options->setPort(5671);
         $options->setCACert(__DIR__ . '/../../provision/test_certs/cacert.pem');
